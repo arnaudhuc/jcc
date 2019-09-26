@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const cardModel = new Schema({
+  number: {type: Number, required: true},
 	name: { type: String, required: true },
   arcaneManaCost: { type: Number },
   natureManaCost: { type: Number },
