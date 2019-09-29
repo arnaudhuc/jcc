@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import cardRouter from './Routes/cardRouter';
 import deckRouter from './Routes/deckRouter';
 import playerRouter from './Routes/playerRouter';
+import cors from 'cors';
 
 const app = express();
 const port = process.env.PORT || 5656;
@@ -20,6 +21,9 @@ const db = mongoose.connect('mongodb://localhost/jcc',
 //     if (err){ return console.error(err)}
 //   }
 // );
+
+// setting CORS
+app.use(cors())
 
 // setting body parser middleware
 app.use(bodyParser.json());
