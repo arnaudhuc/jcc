@@ -1,38 +1,32 @@
-import './styles.scss';
-import getDataService from "./service/getDataService";
 import * as React from "react";
-import * as ReactDOM from 'react-dom';
+import * as ReactDOM from "react-dom";
 
-import {Hello} from './components/components/Hello';
+import Hello from "./components/components/Hello";
 
+import { getPlayerData } from "./service/getDataService";
 
+import "./styles.scss";
 
-class App extends React.Component {
-  constructor(props: Object) {
-    super(props);
-    this.state = {
-      data: {}
-    }
-    this.getPlayersData();
-  }
+const App: React.FC = function() {
+  const [playerState, setPlayerState] = React.useState({});
 
-  async getPlayersData() {
-    return await getDataService('players').then((data) => {
-      this.setState({data});
-    });
-  }
+  React.useEffect(() => {
+    getPlayerData()
+      .then(setPlayerState)
+      .catch(e => {
+        console.error("Cannot get playerData", e);
+      });
+  }, []);
 
-  render() {
-    return (
-      <div>
-        <p>Salut</p>
-        <Hello compiler="Typescript" framework="React JS"></Hello>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <p>Salut</p>
+      <Hello compiler="Typescript" framework="React JS" />
+      <pre>My player state:</pre>
+      <br />
+      <code>{JSON.stringify(playerState, null, 4)}</code>
+    </div>
+  );
+};
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-);
+ReactDOM.render(<App />, document.getElementById("app"));

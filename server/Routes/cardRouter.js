@@ -1,59 +1,75 @@
 import express from 'express';
-import Card from '../models/cardModel';
+
+import { CardModel } from '../models';
+
 const cardRouter = express.Router();
-cardRouter.route('/')
+
+cardRouter
+  .route('/')
+
+  // GET
   .get((req, res) => {
-    Card.find({}, (err, cards) => {
-      res.json(cards)
-    })
+    CardModel.find({}, (err, cards) => {
+      res.json(cards);
+    });
   })
+
+  // POST
   .post((req, res) => {
-    let card = new Card(req.body);
+    const card = new CardModel(req.body);
     card.save();
-    res.status(201).send(card)
-  })
+    res.status(201).send(card);
+  });
 
 // Middleware
 cardRouter.use('/:cardId', (req, res, next) => {
-  Card.findById(req.params.cardId, (err, card) => {
-    if (err)
-      res.status(500).send(err)
+  CardModel.findById(req.params.cardId, (err, card) => {
+    if (err) res.status(500).send(err);
     else {
       req.card = card;
-      next()
+      next();
     }
+  });
+});
+
+cardRouter
+  .route('/:cardId')
+
+  // GET Cards/:cardId
+  .get((req, res) => {
+    res.json(req.card);
   })
 
-})
-cardRouter.route('/:cardId')
-  .get((req, res) => {
-    res.json(req.card)
-  }) // end get Cards/:cardId
+  // PUT
   .put((req, res) => {
     req.card.title = req.body.title;
     req.card.author = req.body.author;
-    req.card.save()
-    res.json(req.card)
+    req.card.save();
+    res.json(req.card);
   })
+
+  // PATCH
   .patch((req, res) => {
     if (req.body._id) {
       delete req.body._id;
     }
-    for (let p in req.body) {
-      req.card[p] = req.body[p]
+    // avoid for .. in, it has some low perf, better use Object.keys || Object.entries || Object.values
+    for (const p in req.body) {
+      req.card[p] = req.body[p];
     }
-    req.card.save()
-    res.json(req.card)
-  })//patch
+    req.card.save();
+    res.json(req.card);
+  })
+
+  // DELETE
   .delete((req, res) => {
     req.card.remove(err => {
       if (err) {
-        res.status(500).send(err)
+        res.status(500).send(err);
+      } else {
+        res.status(204).send('removed');
       }
-      else {
-        res.status(204).send('removed')
-      }
-    })
-  })//delete
+    });
+  });
 
 export default cardRouter;
