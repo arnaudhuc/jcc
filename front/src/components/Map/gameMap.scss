@@ -1,0 +1,58 @@
+.gameMap {
+  width: 100%;
+  background-color: grey;
+  height: 300px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-areas:
+    "place melee empty"
+    "permanent caster discard"
+    "permanent mana deck";
+
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: 1fr 5fr 1fr;
+
+  &--opponent {
+    grid-template-areas:
+      "deck mana permanent"
+      "discard caster permanent"
+      "empty melee place";
+
+    div {
+      transform: rotate(180deg);
+    }
+  }
+
+  div {
+    border: 1px solid black;
+    height: 100%;
+  }
+
+  &__place {
+    grid-area: place;
+  }
+
+  &__melee {
+    grid-area: melee;
+  }
+
+  &__permanent {
+    grid-area: permanent;
+  }
+
+  &__caster {
+    grid-area: caster;
+  }
+
+  &__discard {
+    grid-area: discard;
+  }
+
+  &__mana {
+    grid-area: mana;
+  }
+
+  &__deck {
+    grid-area: deck;
+  }
+}

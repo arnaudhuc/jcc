@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export interface Message {
+interface Message {
   message?: string;
   data: any;
 }
@@ -32,7 +32,7 @@ function getDataService(type: string) {
   };
 }
 
-const getPlayerData = getDataService("player");
-const getDeckData = getDataService("deck");
+const getPlayerData = getDataService("players");
+const getDeckData = getDataService("decks");
 
 export { getPlayerData, getDeckData };

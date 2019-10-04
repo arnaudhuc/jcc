@@ -1,11 +1,13 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
-import Hello from "./components/components/Hello";
+import Hello from './components/Hello/Hello';
+import Maps from './components/Map/Maps';
 
-import { getPlayerData } from "./service/getDataService";
+import { getPlayerData } from './service/getDataService';
 
-import "./styles.scss";
+import './reset.scss';
+import './styles.scss';
 
 const App: React.FC = function() {
   const [playerState, setPlayerState] = React.useState({});
@@ -14,19 +16,20 @@ const App: React.FC = function() {
     getPlayerData()
       .then(setPlayerState)
       .catch(e => {
-        console.error("Cannot get playerData", e);
+        console.error('Cannot get playerData', e);
       });
   }, []);
 
   return (
     <div>
       <p>Salut</p>
-      <Hello compiler="Typescript" framework="React JS" />
+      <Hello compiler='Typescript' framework='React JS' />
       <pre>My player state:</pre>
       <br />
-      <code>{JSON.stringify(playerState, null, 4)}</code>
+      <code>{JSON.stringify(playerState, null, 2)}</code>
+      <Maps />
     </div>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'));

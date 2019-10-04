@@ -19,7 +19,14 @@ const cardModel = new Schema({
   defense: { type: Number },
   life: { type: Number },
   mana: { type: Number },
-  effect: { type: String },
+  effectDescription: { type: String },
+  effectarcaneManaCost: { type: Number },
+  effectnatureManaCost: { type: Number },
+  effectlightManaCost: { type: Number },
+  effectshadowManaCost: { type: Number },
+  effectfellManaCost: { type: Number },
+  effectnecroManaCost: { type: Number },
+  effectneutralManaCost: { type: Number },
   deckId: { type: Number },
 });
 export default mongoose.model('cards', cardModel);
