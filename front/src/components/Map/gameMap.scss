@@ -24,35 +24,45 @@
   }
 
   div {
-    border: 1px solid black;
     height: 100%;
+    color: white;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
   }
 
   &__place {
     grid-area: place;
+    background: SandyBrown;
   }
 
   &__melee {
     grid-area: melee;
+    background: crimson;
   }
 
   &__permanent {
     grid-area: permanent;
+    background: SlateGray;
   }
 
   &__caster {
     grid-area: caster;
+    background: MediumSeaGreen	;
   }
 
   &__discard {
     grid-area: discard;
+    background: black;
   }
 
   &__mana {
     grid-area: mana;
+    background: dodgerblue;
   }
 
   &__deck {
     grid-area: deck;
+    background: BlueViolet;
   }
 }
