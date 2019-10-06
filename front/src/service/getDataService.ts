@@ -10,9 +10,10 @@ interface Message {
 // On utilise le currying pour pouvoir avoir directement des fonctions qui récupère nos player, decks, etc... ( comme ça pas besoin d'écrire 20 fois dans ton code getDataService("player") : https://docs.google.com/presentation/d/1S69pj-cENjHebGkNagMJUKa_Yd9rJoEWFYEOQnqJqU4/edit#slide=id.g5875ecc175_2_13
 
 function getDataService(type: string) {
-  return async (): Promise<Message> => {
+  return async (id?: string): Promise<Message> => {
     try {
-      const response = await axios.get(`http://localhost:5656/api/${type}`);
+      const URI = id ? `http://localhost:5656/api/${type}/${id}` : `http://localhost:5656/api/${type}`;
+      const response = await axios.get(URI);
 
       return {
         data: response.data
