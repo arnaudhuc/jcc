@@ -9,6 +9,20 @@ import './reset.scss';
 import './styles.scss';
 
 const App: React.FC = function() {
+  // playerState = {
+  //   "data": {
+  //     "data": {
+  //       "deck": [
+  //         1,
+  //         2
+  //       ],
+  //       "_id": "5d8ca25d1a79cf6059758fde",
+  //       "name": "Spraypaint",
+  //       "password": "123456789",
+  //       "__v": 0
+  //     }
+  //   }
+  // }
   const [playerState, setPlayerState] = React.useState({});
 
   React.useEffect(() => {
@@ -23,7 +37,7 @@ const App: React.FC = function() {
     <div>
       <p>Salut</p>
       <Hello compiler='Typescript' framework='React JS' />
-      <PlayerInfo data={playerState.data}/>
+      <PlayerInfo data={playerState}/>
     </div>
   );
 };
