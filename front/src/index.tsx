@@ -23,10 +23,7 @@ const App: React.FC = function() {
     <div>
       <p>Salut</p>
       <Hello compiler='Typescript' framework='React JS' />
-      <PlayerInfo data={[playerState]}/>
-      <pre>My player state:</pre>
-      <br />
-      <pre>{JSON.stringify(playerState, null, 2)}</pre>
+      <PlayerInfo data={playerState.data}/>
     </div>
   );
 };

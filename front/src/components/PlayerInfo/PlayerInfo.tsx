@@ -4,12 +4,13 @@ interface playerInterface {
   data: any
 }
 
-const PlayerInfo: React.FC<playerInterface> = function({data}) {
-  console.log(data);
+const PlayerInfo: React.FC<playerInterface> = function(data) {
   return(
-    <p>
-      Name : {data}
-    </p>
+    <div>
+      <h1>PLAYER INFO </h1>
+      <p>{data.name}</p>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
   )
 }
 
