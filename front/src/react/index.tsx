@@ -30,7 +30,7 @@ const App: React.FC = function() {
   const [playerState, setPlayerState] = React.useState({});
 
   React.useEffect(() => {
-    getPlayerData("5d8ca25d1a79cf6059758fde")
+    getPlayerData("5d9cd0b3339ed636c89734fa")
       .then(setPlayerState)
       .catch(e => {
         console.error("Cannot get playerData", e);
