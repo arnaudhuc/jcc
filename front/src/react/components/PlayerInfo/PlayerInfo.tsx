@@ -9,8 +9,7 @@ const PlayerInfo: React.FC<playerInterface> = function({name}) {
   return(
     <div>
       <h1>PLAYER INFO </h1>
-      {/* <p>{data}</p> */}
-      <pre>{JSON.stringify(name, null, 2)}</pre>
+      {<p>{name}</p>}
     </div>
   )
 }
