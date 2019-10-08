@@ -1,15 +1,16 @@
 import * as React from 'react';
 
 interface playerInterface {
-  data: any
+  name: string;
 }
 
-const PlayerInfo: React.FC<playerInterface> = function(data) {
+
+const PlayerInfo: React.FC<playerInterface> = function({name}) {
   return(
     <div>
       <h1>PLAYER INFO </h1>
       {/* <p>{data}</p> */}
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <pre>{JSON.stringify(name, null, 2)}</pre>
     </div>
   )
 }

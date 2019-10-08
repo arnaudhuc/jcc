@@ -13,10 +13,10 @@ function getDataService(type: string) {
   return async (id?: string): Promise<Message> => {
     try {
       const URI = id ? `http://localhost:5656/api/${type}/${id}` : `http://localhost:5656/api/${type}`;
-      const response = await axios.get(URI);
+      const {data} = await axios.get(URI);
 
       return {
-        data: response.data
+        data
       };
     } catch (thrown) {
       let data = {};
