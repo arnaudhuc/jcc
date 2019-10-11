@@ -6,13 +6,22 @@
         "noImplicitReturns": true,
         "noImplicitAny": true,
         "module": "es6",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
         "moduleResolution": "node",
         "target": "es5",
         "allowJs": true,
         "jsx": "react",
-        "lib": ["dom", "esnext"]
+        "lib": [
+            "dom",
+            "esnext"
+        ]
     },
     "include": [
         "./src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
     ]
 }
