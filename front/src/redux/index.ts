@@ -11,6 +11,15 @@ import {
 
 
 export const initRedux = function():any {
+  const submitButton = <HTMLFormElement>document.getElementById('form');
+  const input = <HTMLInputElement>document.getElementById('todo');
+
+  submitButton.addEventListener('submit', function(e){
+    e.preventDefault()
+    store.dispatch(addTodo(input.value))
+    console.log(store.getState())
+    return false;
+  })
   // Log the initial state
   const store = createStore(todoApp)
 
@@ -29,5 +38,5 @@ export const initRedux = function():any {
   // store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_COMPLETED))
 
   // Stop listening to state updates
-  // unsubscribe()
+  unsubscribe()
 }
