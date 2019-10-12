@@ -16,7 +16,7 @@ export function visibilityFilter(state = SHOW_ALL, action: any) {
   }
 }
 
-export function todos(state = [], action: any) {
+export function todos(state = [], action: any): any {
   switch (action.type) {
     case ADD_TODO:
       return [
