@@ -23,6 +23,6 @@ export const init = function() {
 
   let playerName;
 
-  playerInfo.then((info) => playerName = info);
+  playerName = playerInfo.then((info) => info);
   console.log(playerName);
 }
