@@ -1,4 +1,7 @@
 import { getPlayerData } from '../utils';
+import { createCanvas } from './';
+import { store, addPlayer } from '../store';
+import { setPlayerLife } from '../store/actions';
 
 async function getAllPlayer() {
   const players = await getPlayerData();
@@ -16,22 +19,31 @@ async function getMainPlayer() {
   return player.data[0].name;
 }
 
-function drawHeroName(heroname: string) {
-  const canvas = <HTMLCanvasElement>document.getElementById("main");
+function drawHeroName(playerName: string) {
+  const canvas = createCanvas(window.innerWidth, window.innerHeight, 'player');
   const ctx = <CanvasRenderingContext2D>canvas.getContext('2d');
+  store.subscribe(() => {
+    console.log('subscribe');
+    console.log(store.getState());
+  });
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  store.dispatch(addPlayer({ name: playerName, life: 30 }));
+
+  store.dispatch(setPlayerLife({ name: playerName, life: 19 }));
+
+  store.dispatch(setPlayerLife({ name: playerName, life: 20 }));
+
+  store.dispatch(setPlayerLife({ name: playerName, life: 190 }));
 
   ctx.font='16px serif';
-  ctx.fillText(heroname, 50, 50);
+  ctx.fillText(playerName, 50, 50);
+
+  const canvasBlock = <HTMLDivElement>document.getElementById('canvas');
+  canvasBlock.append(canvas);
+
 }
 
-export const init = function() {
+export const drawPlayerInfo = function() {
   const playerInfo = getMainPlayer();
-
-  let playerName;
-
-  playerName = playerInfo.then((name) => drawHeroName(name));
-  console.log(playerName);
+  playerInfo.then((name) => drawHeroName(name));
 }

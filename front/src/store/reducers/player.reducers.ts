@@ -1,4 +1,4 @@
-import {ADD_PLAYER, playerInfo} from '../actions';
+import {ADD_PLAYER, SET_PLAYER_LIFE, playerInfo} from '../actions';
 
 
 interface actionInterface {
@@ -16,6 +16,15 @@ export function players(state = [], action: actionInterface): any {
           name: action.playerInfo.name
         }
       ]
+    case SET_PLAYER_LIFE:
+      return state.map((player) => {
+        if (player.name === action.playerInfo.name) {
+          return Object.assign({}, player, {
+            life: action.playerInfo.life
+          })
+        }
+        return player
+      })
     default:
       return state
   }

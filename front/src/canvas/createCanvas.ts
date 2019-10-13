@@ -12,10 +12,11 @@ const PIXEL_RATIO = (function () {
 })();
 
 
-export const createCanvas = function (w: number, h: number, ratio?: number) {
+export const createCanvas = function (w: number, h: number, id: string = new Date().getMilliseconds().toString() , ratio?: number): HTMLCanvasElement {
   if (!ratio) { ratio = PIXEL_RATIO; }
   const can = <HTMLCanvasElement>document.createElement("canvas");
   const ctx = <CanvasRenderingContext2D>can.getContext('2d');
+  can.setAttribute('id', id);
   can.width = w * ratio;
   can.height = h * ratio;
   can.style.width = w + "px";
