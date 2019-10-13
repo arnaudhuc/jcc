@@ -11,12 +11,13 @@ async function getAllPlayer() {
 async function getMainPlayer() {
   const playersId = getAllPlayer();
   let id;
-  playersId.then((data) => {
-     id = data.data._id
-  })
-  const player = await getPlayerData(id);
 
-  return player.data[0].name;
+  return playersId.then((data) => {
+    return getPlayerData(data.data[0]._id).then(player => {
+      return player.data.name;
+    })
+  })
+
 }
 
 function drawHeroName(playerName: string) {

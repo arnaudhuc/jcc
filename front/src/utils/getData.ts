@@ -1,5 +1,3 @@
-import axios from "axios";
-
 interface Message {
   message?: string;
   data: any;
@@ -13,20 +11,23 @@ function getDataService(type: string) {
   return async (id?: string): Promise<Message> => {
     try {
       const URI = id ? `http://localhost:5656/api/${type}/${id}` : `http://localhost:5656/api/${type}`;
-      const { data } = await axios.get(URI);
-
+      const data = await fetch(URI).then((response) => {
+        if(response.ok) {
+          return response.json().then(playerInfo => playerInfo)
+        } else {
+          return {
+            message: 'error'
+          }
+        }
+      })
       return {
         data
       };
     } catch (thrown) {
       let data = {};
 
-      if (axios.isCancel(thrown)) {
-        data = thrown.message;
-      }
-
       return {
-        message: `Erreur lors de la récupération des données ${type}`,
+        message: `Erreur lors de la récupération des données`,
         data
       };
     }
