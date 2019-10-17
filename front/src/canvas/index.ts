@@ -1,6 +1,8 @@
 import { drawPlayerInfo } from './drawPlayerInfo';
 import { drawBackground } from './background';
 
+import './canvas.scss'
+
 const initCanvas = function () {
   const canvases = [];
   const canvasBlock = <HTMLDivElement>document.getElementById('canvas');

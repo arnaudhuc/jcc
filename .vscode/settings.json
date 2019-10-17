@@ -12,15 +12,7 @@
       "autoFix": true
     }
   ],
-  "[javascriptreact]": {
-    "editor.formatOnSave": false
-  },
-  "[typescript]": {
-    "editor.formatOnSave": false
-  },
-  "[typescriptreact]": {
-    "editor.formatOnSave": false
-  },
+  "editor.formatOnSave": true,
   "stylelint.enable": true,
   "css.validate": false,
   "less.validate": false,
