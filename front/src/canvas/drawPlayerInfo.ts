@@ -22,10 +22,10 @@ async function getMainPlayer() {
 function drawHeroName(playerName: string) {
   const canvas = createCanvas(window.innerWidth, window.innerHeight, 'player');
   const ctx = <CanvasRenderingContext2D>canvas.getContext('2d');
-  store.subscribe(() => {
-    console.log('subscribe');
-    console.log(store.getState());
-  });
+  // store.subscribe(() => {
+  //   console.log('subscribe');
+  //   console.log(store.getState());
+  // });
 
   store.dispatch(addPlayer({ name: playerName, life: 30 }));
 
@@ -35,7 +35,7 @@ function drawHeroName(playerName: string) {
 
   store.dispatch(setPlayerLife({ name: playerName, life: 190 }));
 
-  ctx.font='16px serif';
+  ctx.font = '16px serif';
   ctx.fillText(playerName, 50, 50);
 
   const canvasBlock = <HTMLDivElement>document.getElementById('canvas');
@@ -43,7 +43,7 @@ function drawHeroName(playerName: string) {
 
 }
 
-export const drawPlayerInfo = function() {
+export const drawPlayerInfo = function () {
   const playerInfo = getMainPlayer();
   playerInfo.then((name) => drawHeroName(name));
 }

@@ -1,4 +1,4 @@
-import {createCanvas} from './';
+import { createCanvas } from './';
 
 export function drawBackground() {
   const wh = window.innerHeight;
@@ -6,7 +6,7 @@ export function drawBackground() {
   const background = createCanvas(ww, wh, 'background');
   const ctx = <CanvasRenderingContext2D>background.getContext('2d');
 
-  ctx.fillStyle = 'green';
+  ctx.fillStyle = 'DeepSkyBlue';
   ctx.fillRect(0, 0, ww, wh);
   return background;
 }

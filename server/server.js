@@ -10,9 +10,12 @@ const port = process.env.PORT || 5656;
 // Connecting to the database
 mongoose
   .connect(
-    'mongodb://localhost/jcc',
-    // 'mongodb+srv://admin:pass1234@cluster0-3q8op.mongodb.net/jcc?retryWrites=true&w=majority',
-    { useNewUrlParser: true, useUnifiedTopology: true },
+    // 'mongodb://localhost/jcc',
+    'mongodb+srv://admin:pass1234@cluster0-3q8op.mongodb.net/jcc?retryWrites=true&w=majority',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
   )
   .catch(e => {
     console.error('Cannot connect to database', e);
@@ -29,7 +32,11 @@ app.use(cors());
 
 // setting body parser middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  }),
+);
 
 // API routes
 app.use('/api/cards', cardRouter);

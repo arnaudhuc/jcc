@@ -3,16 +3,18 @@ const PIXEL_RATIO = (function () {
   const ctx = <CanvasRenderingContext2D>can.getContext('2d');
   const dpr = window.devicePixelRatio || 1;
   const bsr = ctx.webkitBackingStorePixelRatio ||
-      ctx.mozBackingStorePixelRatio ||
-      ctx.msBackingStorePixelRatio ||
-      ctx.oBackingStorePixelRatio ||
-      ctx.backingStorePixelRatio || 1;
+    ctx.mozBackingStorePixelRatio ||
+    ctx.msBackingStorePixelRatio ||
+    ctx.oBackingStorePixelRatio ||
+    ctx.backingStorePixelRatio || 1;
+
+  console.log(bsr);
 
   return dpr / bsr;
 })();
 
 
-export const createCanvas = function (w: number= window.innerWidth, h: number = window.innerHeight, id: string = new Date().getMilliseconds().toString() , ratio?: number): HTMLCanvasElement {
+export const createCanvas = function (w: number = window.innerWidth, h: number = window.innerHeight, id: string = new Date().getMilliseconds().toString(), ratio?: number): HTMLCanvasElement {
   if (!ratio) { ratio = PIXEL_RATIO; }
   const can = <HTMLCanvasElement>document.createElement("canvas");
   const ctx = <CanvasRenderingContext2D>can.getContext('2d');
