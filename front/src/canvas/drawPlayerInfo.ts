@@ -4,8 +4,7 @@ import { store, addPlayer } from '../store';
 import { setPlayerLife } from '../store/actions';
 
 async function getAllPlayer() {
-  const players = await getPlayerData();
-  return players
+  return await getPlayerData();
 }
 
 async function getMainPlayer() {

@@ -29,4 +29,5 @@ const cardModel = new Schema({
   effectneutralManaCost: { type: Number },
   deckId: { type: Number },
 });
+
 export default mongoose.model('cards', cardModel);

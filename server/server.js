@@ -8,15 +8,15 @@ import { cardRouter, deckRouter, playerRouter } from './Routes';
 const app = express();
 const port = process.env.PORT || 5656;
 // Connecting to the database
-const db = mongoose.connect(
-  'mongodb+srv://admin:pass1234@cluster0-3q8op.mongodb.net/jcc?retryWrites=true&w=majority',
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  err => {
-    if (err) {
-      return console.error(err);
-    }
-  },
-);
+mongoose
+  .connect(
+    'mongodb://localhost/jcc',
+    // 'mongodb+srv://admin:pass1234@cluster0-3q8op.mongodb.net/jcc?retryWrites=true&w=majority',
+    { useNewUrlParser: true, useUnifiedTopology: true },
+  )
+  .catch(e => {
+    console.error('Cannot connect to database', e);
+  });
 // const db = mongoose.connect('mongodb+srv://admin:pass1234@cluster0-3q8op.mongodb.net/jcc?retryWrites=true&w=majority',
 //   { useNewUrlParser: true, useUnifiedTopology: true },
 //   function(err) {

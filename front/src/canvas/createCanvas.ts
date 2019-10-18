@@ -12,7 +12,7 @@ const PIXEL_RATIO = (function () {
 })();
 
 
-export const createCanvas = function (w: number, h: number, id: string = new Date().getMilliseconds().toString() , ratio?: number): HTMLCanvasElement {
+export const createCanvas = function (w: number= window.innerWidth, h: number = window.innerHeight, id: string = new Date().getMilliseconds().toString() , ratio?: number): HTMLCanvasElement {
   if (!ratio) { ratio = PIXEL_RATIO; }
   const can = <HTMLCanvasElement>document.createElement("canvas");
   const ctx = <CanvasRenderingContext2D>can.getContext('2d');
