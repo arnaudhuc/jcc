@@ -6,7 +6,12 @@ async function getAllCards() {
 
 }
 const cardWidth = 150;
-let cardYPosition: number = 0;
+const cardHeight = 300;
+
+let cardPosition: iCardPosition = {
+  x: 0,
+  y: 0
+}
 
 export async function drawCards() {
   const { data: cards } = await getAllCards();
@@ -23,7 +28,6 @@ export async function drawCards() {
 
 function buildCard(card: Card, index: number, canvas: HTMLCanvasElement) {
   const context: CanvasRenderingContext2D = canvas.getContext('2d')!;
-  const cardHeight = 300;
   const fontHeight = 10;
   const monsterImgWidth = cardWidth - 20;
   const monsterImgHeight = monsterImgWidth;
@@ -32,22 +36,32 @@ function buildCard(card: Card, index: number, canvas: HTMLCanvasElement) {
   const classe = card.class.join(', ');
 
   context.fillStyle = 'blue';
-  context.fillRect(cardPosition, 10, cardWidth, cardHeight);
+  context.fillRect(cardPosition.x, cardPosition.y, cardWidth, cardHeight);
   context.fillStyle = 'yellow';
-  context.fillRect(cardPosition + 10, 20, monsterImgWidth, monsterImgHeight);
+  context.fillRect(cardPosition.x + 10, cardPosition.y + 10, monsterImgWidth, monsterImgHeight);
   context.fillStyle = 'white';
   context.textBaseline = 'top';
   context.textAlign = 'center';
   context.font = `${fontHeight}px helvetica, serif`;
-  context.fillText(`${card.name} - ${classe}`, (cardPosition + cardWidth) / 2, monsterImgHeight + 25, cardWidth / 2);
-  context.fillText(card.effectDescription ? card.effectDescription : '', (cardPosition + cardWidth) / 2, monsterImgHeight + 40);
+  context.fillText(`${card.name} / ${index} - ${classe}`, (cardPosition.x + (cardWidth / 2)), cardPosition.y + monsterImgHeight + 25, cardWidth / 2);
+  context.fillText(card.effectDescription ? card.effectDescription : '', (cardPosition.x + (cardWidth / 2)), cardPosition.y + monsterImgHeight + 40);
 }
 
-function calcCardPosition(index: number): number {
-  const maxCardRow = 6;
-  const windowsW: number = window.innerWidth;
-  if (((cardWidth * index) + (index * 10) + 10) + cardWidth > windowsW) {
+interface iCardPosition {
+  x: number,
+  y: number
+}
 
+function calcCardPosition(index: number): iCardPosition {
+  const maxCardRow = 6;
+
+  if (index !== 0 && (index  % maxCardRow) === 0) {
+    cardPosition.y = cardPosition.y + (10 + cardHeight)
   }
-  return (cardWidth * index) + (index * 10) + 10;
+
+  cardPosition.x = (cardWidth * (index % maxCardRow)) + ((index % maxCardRow) * 10) + 10;
+
+  console.log((index % maxCardRow))
+
+  return cardPosition;
 } 
