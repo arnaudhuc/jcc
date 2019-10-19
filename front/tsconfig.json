@@ -15,13 +15,15 @@
         "lib": [
             "dom",
             "esnext"
-        ]
+        ],
+        "types": ["jest"]
     },
     "include": [
         "./src/**/*"
     ],
     "exclude": [
         "node_modules",
-        "dist"
+        "dist",
+        "**/*.spec.ts"
     ]
 }

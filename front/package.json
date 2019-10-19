@@ -8,24 +8,30 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel src/index.html --open",
-    "build": "parcel build src/index.html"
+    "build": "parcel build src/index.html",
+    "test": "jest"
   },
   "dependencies": {
-    "@types/jest": "^24.0.18",
     "@types/node": "^12.7.12",
     "eslint-plugin-react": "^7.16.0",
     "redux": "^4.0.4",
     "tslint": "^5.20.0"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.19",
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
+    "canvas": "^2.6.0",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-prettier": "^3.1.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.9.0",
+    "jest-canvas-mock": "^2.1.2",
     "parcel-bundler": "^1.12.3",
     "prettier": "^1.18.2",
     "sass": "^1.23.0",
+    "ts-jest": "^24.1.0",
     "typescript": "^3.6.3"
   }
 }
