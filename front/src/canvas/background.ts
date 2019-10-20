@@ -6,7 +6,7 @@ export function drawBackground() {
   const background = createCanvas(ww, wh, 'background');
   const ctx = <CanvasRenderingContext2D>background.getContext('2d');
 
-  ctx.fillStyle = 'DeepSkyBlue';
+  ctx.fillStyle = '#8d6e63';
   ctx.fillRect(0, 0, ww, wh);
   return background;
 }

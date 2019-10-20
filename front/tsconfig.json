@@ -16,14 +16,15 @@
             "dom",
             "esnext"
         ],
-        "types": ["jest"]
+        "types": ["jest"],
     },
     "include": [
         "./src/**/*"
     ],
     "exclude": [
-        "node_modules",
         "dist",
-        "**/*.spec.ts"
+        "**/*.spec.ts",
+        "node_modules",
+        "!node_modules/@types"
     ]
 }
