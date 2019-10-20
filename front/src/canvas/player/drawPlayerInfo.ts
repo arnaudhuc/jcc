@@ -1,7 +1,8 @@
 import { getPlayerData } from '../../utils';
-import { createCanvas } from '..';
+import { createCanvas } from '../utils';
 import { store, addPlayer } from '../../store';
 import { setPlayerLife } from '../../store/actions';
+import { canvasHeight, canvasWidth } from '../consts';
 
 async function getAllPlayer() {
   return await getPlayerData();
@@ -20,7 +21,7 @@ async function getMainPlayer() {
 }
 
 function drawHeroName(playerName: string) {
-  const canvas = createCanvas(window.innerWidth, window.innerHeight, 'player');
+  const canvas = createCanvas(canvasWidth, canvasHeight, 'player');
   const ctx = <CanvasRenderingContext2D>canvas.getContext('2d');
   // store.subscribe(() => {
   //   console.log('subscribe');

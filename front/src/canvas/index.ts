@@ -15,4 +15,3 @@ const initCanvas = function () {
 }
 
 export default initCanvas;
-export { createCanvas } from './utils/createCanvas';
