@@ -11,7 +11,8 @@ async function getAllCards() {
 export async function displayCards() {
   const { data: cards } = await getAllCards();
   const canvasID = 'cards';
-  const cardCanvas = <HTMLCanvasElement>createCanvas(canvasWidth, canvasHeight, canvasID);
+  const cardCanvasDom = <HTMLCanvasElement>document.getElementById('cards')
+  const cardCanvas = cardCanvasDom === null ? <HTMLCanvasElement>createCanvas(canvasWidth, canvasHeight, canvasID) : <HTMLCanvasElement>cardCanvasDom;
   const canvasContainer = <HTMLDivElement>document.getElementById('canvas');
 
   canvasContainer.append(cardCanvas);
