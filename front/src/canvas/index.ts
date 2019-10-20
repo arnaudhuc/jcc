@@ -11,7 +11,6 @@ const initCanvas = function () {
 
   // async drawing, must be separated
   drawPlayerInfo();
-  displayCards();
 }
 
 export default initCanvas;
