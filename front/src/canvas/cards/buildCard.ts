@@ -1,5 +1,4 @@
-import { createCanvas } from './';
-import { getCardsData, Card } from '../utils/';
+import { iCard } from '../../utils';
 
 const cardWidth = 200;
 const cardHeight = 300;
@@ -14,11 +13,18 @@ let cardPosition: iCardPosition = {
   y: 0
 }
 
-async function getAllCards() {
-  return await getCardsData();
+export function calcCardPosition(index: number): iCardPosition {
+  const maxCardRow = 6;
+
+  if (index !== 0 && (index % maxCardRow) === 0) {
+    cardPosition.y = cardPosition.y + (10 + cardHeight)
+  }
+
+  cardPosition.x = (cardWidth * (index % maxCardRow)) + ((index % maxCardRow) * 10) + 10;
+  return cardPosition;
 }
 
-function buildCard(card: Card, index: number, canvas: HTMLCanvasElement) {
+export function buildCard(card: iCard, index: number, canvas: HTMLCanvasElement) {
   const context: CanvasRenderingContext2D = canvas.getContext('2d')!;
   const fontHeight = 10;
   const monsterImgWidth = cardWidth - 20;
@@ -45,28 +51,4 @@ function buildCard(card: Card, index: number, canvas: HTMLCanvasElement) {
   context.font = `${fontHeight}px helvetica, serif`;
   context.fillText(`${card.name} / ${index} - ${classe}`, (cardPosition.x + (cardWidth / 2)), cardPosition.y + monsterImgHeight + 25, cardWidth / 2);
   context.fillText(card.effectDescription ? card.effectDescription : '', (cardPosition.x + (cardWidth / 2)), cardPosition.y + monsterImgHeight + 40);
-}
-
-export function calcCardPosition(index: number): iCardPosition {
-  const maxCardRow = 6;
-
-  if (index !== 0 && (index % maxCardRow) === 0) {
-    cardPosition.y = cardPosition.y + (10 + cardHeight)
-  }
-
-  cardPosition.x = (cardWidth * (index % maxCardRow)) + ((index % maxCardRow) * 10) + 10;
-  return cardPosition;
-}
-
-export async function drawCards() {
-  const { data: cards } = await getAllCards();
-  const canvasID = 'cards';
-  const cardCanvas = <HTMLCanvasElement>createCanvas(undefined, undefined, canvasID);
-  const canvasContainer = <HTMLDivElement>document.getElementById('canvas');
-
-  canvasContainer.append(cardCanvas);
-
-  cards.forEach((card: Card, index: number) => {
-    buildCard(card, index, cardCanvas);
-  });
 }

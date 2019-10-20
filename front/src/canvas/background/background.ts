@@ -1,4 +1,4 @@
-import { createCanvas } from './';
+import { createCanvas } from '..';
 
 export function drawBackground() {
   const wh = window.innerHeight;

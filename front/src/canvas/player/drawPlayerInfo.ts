@@ -1,7 +1,7 @@
-import { getPlayerData } from '../utils';
-import { createCanvas } from './';
-import { store, addPlayer } from '../store';
-import { setPlayerLife } from '../store/actions';
+import { getPlayerData } from '../../utils';
+import { createCanvas } from '..';
+import { store, addPlayer } from '../../store';
+import { setPlayerLife } from '../../store/actions';
 
 async function getAllPlayer() {
   return await getPlayerData();

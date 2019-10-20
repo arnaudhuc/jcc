@@ -1,6 +1,6 @@
-import { drawPlayerInfo } from './drawPlayerInfo';
-import { drawBackground } from './background';
-import { drawCards } from './drawCard';
+import { drawPlayerInfo } from './player/drawPlayerInfo';
+import { drawBackground } from './background/background';
+import { displayCards } from './cards/displayAllCards';
 
 import './canvas.scss'
 
@@ -11,8 +11,8 @@ const initCanvas = function () {
 
   // async drawing, must be separated
   drawPlayerInfo();
-  drawCards();
+  displayCards();
 }
 
 export default initCanvas;
-export { createCanvas } from './createCanvas';
+export { createCanvas } from './utils/createCanvas';

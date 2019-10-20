@@ -1,6 +1,6 @@
 interface Message {
   message?: string;
-  data: Player | Deck | Card;
+  data: Player | Deck | iCard;
   id?: string;
 }
 
@@ -20,7 +20,7 @@ interface getData {
   getDataService(id?: string): Promise<Message>;
 }
 
-export interface Card {
+export interface iCard {
   number: number;
   name: string;
   arcaneManaCost?: number;
