@@ -1,13 +1,12 @@
-import { ADD_PLAYER, SET_PLAYER_LIFE, playerInfo } from '../actions';
-
+import { ADD_PLAYER, SET_PLAYER_LIFE, playerInfo } from "../actions";
 
 interface iActionInterface {
   type: string;
-  playerInfo: playerInfo
+  playerInfo: playerInfo;
 }
 
 interface iPlayer {
-  name: string
+  name: string;
 }
 
 export function players(state = [], action: iActionInterface): any {
@@ -19,17 +18,17 @@ export function players(state = [], action: iActionInterface): any {
           life: action.playerInfo.life,
           name: action.playerInfo.name
         }
-      ]
+      ];
     case SET_PLAYER_LIFE:
       return state.map((player: iPlayer) => {
         if (player.name === action.playerInfo.name) {
           return Object.assign({}, player, {
             life: action.playerInfo.life
-          })
+          });
         }
-        return player
-      })
+        return player;
+      });
     default:
-      return state
+      return state;
   }
 }

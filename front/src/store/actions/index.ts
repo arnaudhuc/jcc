@@ -1,1 +1,1 @@
-export * from './player.actions';
+export * from "./player.actions";

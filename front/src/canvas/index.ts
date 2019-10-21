@@ -1,16 +1,16 @@
-import { drawPlayerInfo } from './player/drawPlayerInfo';
-import { drawBackground } from './background/background';
-import { displayCards } from './cards/displayAllCards';
+import { drawPlayerInfo } from "./player/drawPlayerInfo";
+import { drawBackground } from "./background/background";
+import { displayCards } from "./cards/displayAllCards";
 
-import './canvas.scss'
+import "./canvas.scss";
 
-const initCanvas = function () {
-  const canvasBlock = <HTMLDivElement>document.getElementById('canvas');
+const initCanvas = function() {
+  const canvasBlock = <HTMLDivElement>document.getElementById("canvas");
 
   canvasBlock.append(drawBackground());
 
   // async drawing, must be separated
   drawPlayerInfo();
-}
+};
 
 export default initCanvas;

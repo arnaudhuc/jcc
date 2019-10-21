@@ -1,12 +1,9 @@
-import { createStore } from 'redux'
-import reducers from './reducers'
+import { createStore } from "redux";
+import reducers from "./reducers";
 
-export {
-  addPlayer
-} from './actions'
+export { addPlayer } from "./actions";
 
-
-export const store = createStore(reducers)
+export const store = createStore(reducers);
 
 // export const initRedux = function():any {
 //   const submitButton = <HTMLFormElement>document.getElementById('form');

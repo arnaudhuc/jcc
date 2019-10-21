@@ -3,17 +3,17 @@ function deleteDataService(type: string) {
     try {
       const URI = `http://localhost:5656/api/${type}/${id}`;
       const fetchOptions = {
-        method: 'DELETE'
-      }
-      const data = await fetch(URI, fetchOptions).then((response) => {
+        method: "DELETE"
+      };
+      const data = await fetch(URI, fetchOptions).then(response => {
         if (response.ok) {
-          return response.json().then(data => data)
+          return response.json().then(data => data);
         } else {
           return {
-            message: 'error'
-          }
+            message: "error"
+          };
         }
-      })
+      });
       return {
         data
       };

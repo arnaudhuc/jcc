@@ -2,8 +2,8 @@
  * action types
  */
 
-export const ADD_PLAYER = 'ADD_PLAYER'
-export const SET_PLAYER_LIFE = "SET_PLAYER_LIFE"
+export const ADD_PLAYER = "ADD_PLAYER";
+export const SET_PLAYER_LIFE = "SET_PLAYER_LIFE";
 
 /*
  * action creators
@@ -20,10 +20,9 @@ interface setPlayerInfo {
 }
 
 export function addPlayer(playerInfo: playerInfo) {
-  return { type: ADD_PLAYER, playerInfo }
+  return { type: ADD_PLAYER, playerInfo };
 }
 
-
-export function setPlayerLife(playerInfo: playerInfo){
-  return { type: SET_PLAYER_LIFE, playerInfo}
+export function setPlayerLife(playerInfo: playerInfo) {
+  return { type: SET_PLAYER_LIFE, playerInfo };
 }

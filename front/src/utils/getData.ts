@@ -41,7 +41,7 @@ export interface iCard {
   effectarcaneManaCost?: number;
   effectnatureManaCost?: number;
   effectlightManaCost?: number;
-  effectshadowManaCost?: number
+  effectshadowManaCost?: number;
   effectfellManaCost?: number;
   effectnecroManaCost?: number;
   effectneutralManaCost?: number;
@@ -56,16 +56,18 @@ export interface iCard {
 function getDataService(type: string) {
   return async (id?: string) => {
     try {
-      const URI = id ? `http://localhost:5656/api/${type}/${id}` : `http://localhost:5656/api/${type}`;
-      const data = await fetch(URI).then((response) => {
+      const URI = id
+        ? `http://localhost:5656/api/${type}/${id}`
+        : `http://localhost:5656/api/${type}`;
+      const data = await fetch(URI).then(response => {
         if (response.ok) {
-          return response.json().then(data => data)
+          return response.json().then(data => data);
         } else {
           return {
-            message: 'error'
-          }
+            message: "error"
+          };
         }
-      })
+      });
       return {
         data
       };
