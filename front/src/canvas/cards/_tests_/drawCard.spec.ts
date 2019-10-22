@@ -1,4 +1,4 @@
-import { calcCardPosition } from "../drawCard";
+import { calcCardPosition } from "../buildCard";
 
 describe("calcCardPosition", () => {
   test("it should return 1st card position at 10,0", () => {
