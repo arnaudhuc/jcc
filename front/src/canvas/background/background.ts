@@ -1,11 +1,18 @@
-import { createCanvas } from "../utils";
 import { canvasHeight, canvasWidth } from "../consts";
+import Konva from "konva";
+import { store } from "../../store";
 
 export function drawBackground() {
-  const background = createCanvas(canvasWidth, canvasHeight, "background");
-  const ctx = <CanvasRenderingContext2D>background.getContext("2d");
+  const { canvas: storage } = store.getState();
+  const layer = new Konva.Layer();
+  const background = new Konva.Rect({
+    x: 0,
+    y: 0,
+    width: canvasWidth,
+    height: canvasHeight,
+    fill: "#8d6e63"
+  });
 
-  ctx.fillStyle = "#8d6e63";
-  ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-  return background;
+  layer.add(background);
+  storage.canvas.add(layer);
 }

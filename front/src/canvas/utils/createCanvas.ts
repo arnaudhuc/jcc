@@ -1,3 +1,7 @@
+import Konva from "konva";
+import { store } from "../../store";
+import { addCanvas } from "../../store/actions";
+
 const PIXEL_RATIO = (function() {
   const can = <HTMLCanvasElement>document.createElement("canvas");
   try {
@@ -22,22 +26,12 @@ export const createCanvas = function(
   h: number = window.innerHeight,
   id: string = new Date().getMilliseconds().toString(),
   ratio?: number
-): HTMLCanvasElement {
-  if (!ratio) {
-    ratio = PIXEL_RATIO;
-  }
-  const can = <HTMLCanvasElement>document.createElement("canvas");
-  try {
-    const ctx = <CanvasRenderingContext2D>can.getContext("2d");
-    can.setAttribute("id", id);
-    can.width = w * ratio;
-    can.height = h * ratio;
-    can.style.width = w + "px";
-    can.style.height = h + "px";
-    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-  } catch (e) {
-    console.log(e);
-  }
+): any {
+  const can = new Konva.Stage({
+    container: id,
+    width: w,
+    height: h
+  });
 
-  return can;
+  store.dispatch(addCanvas(can));
 };
