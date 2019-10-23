@@ -7,7 +7,7 @@ async function getAllCards() {
   return await getCardsData();
 }
 
-export async function displayCards() {
+export async function displayCards(): Promise<any> {
   const { data: cards } = await getAllCards();
   const canvasID = "cards";
   const cardCanvasDom = <HTMLCanvasElement>document.getElementById("cards");

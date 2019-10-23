@@ -1,9 +1,7 @@
 import { getPlayerData } from "../../utils";
-import { createCanvas } from "../utils";
 import { store, addPlayer } from "../../store";
 import { setPlayerLife } from "../../store/actions";
-import { canvasHeight, canvasWidth } from "../consts";
-
+import Konva from "konva";
 async function getAllPlayer() {
   return await getPlayerData();
 }
@@ -20,12 +18,21 @@ async function getMainPlayer() {
 }
 
 function drawHeroName(playerName: string) {
-  const canvas = createCanvas(canvasWidth, canvasHeight, "player");
-  const ctx = <CanvasRenderingContext2D>canvas.getContext("2d");
+  const { canvas: storage } = store.getState();
   // store.subscribe(() => {
-  //   console.log('subscribe');
-  //   console.log(store.getState());
+  //   console.log("subscribe");
+  // console.log(storage.canvas);
   // });
+
+  const layer = new Konva.Layer();
+
+  const playerText = new Konva.Text({
+    fontSize: 16,
+    fontFamily: "serif",
+    text: playerName,
+    x: 50,
+    y: 50
+  });
 
   store.dispatch(addPlayer({ name: playerName, life: 30 }));
 
@@ -35,11 +42,9 @@ function drawHeroName(playerName: string) {
 
   store.dispatch(setPlayerLife({ name: playerName, life: 190 }));
 
-  ctx.font = "16px serif";
-  ctx.fillText(playerName, 50, 50);
+  layer.add(playerText);
 
-  const canvasBlock = <HTMLDivElement>document.getElementById("canvas");
-  canvasBlock.append(canvas);
+  storage.canvas.add(layer);
 }
 
 export const drawPlayerInfo = function() {

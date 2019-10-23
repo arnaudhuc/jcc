@@ -1,4 +1,4 @@
-import { ADD_CANVAS, GET_CANVAS } from "../actions";
+import { ADD_CANVAS } from "../actions";
 
 export function canvas(state = [], action: any): any {
   switch (action.type) {

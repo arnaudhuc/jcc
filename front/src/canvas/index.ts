@@ -11,7 +11,7 @@ const initCanvas = function() {
   drawBackground();
 
   // async drawing, must be separated
-  // drawPlayerInfo();
+  drawPlayerInfo();
 };
 
 export default initCanvas;

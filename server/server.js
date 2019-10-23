@@ -10,8 +10,8 @@ const port = process.env.PORT || 5656;
 // Connecting to the database
 mongoose
   .connect(
-    'mongodb://localhost/jcc',
-    // 'mongodb+srv://admin:pass1234@cluster0-3q8op.mongodb.net/jcc?retryWrites=true&w=majority',
+    // 'mongodb://localhost/jcc',
+    'mongodb+srv://admin:pass1234@cluster0-3q8op.mongodb.net/jcc?retryWrites=true&w=majority',
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
