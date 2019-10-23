@@ -9,17 +9,8 @@ async function getAllCards() {
 
 export async function displayCards(): Promise<any> {
   const { data: cards } = await getAllCards();
-  const canvasID = "cards";
-  const cardCanvasDom = <HTMLCanvasElement>document.getElementById("cards");
-  const cardCanvas =
-    cardCanvasDom === null
-      ? <HTMLCanvasElement>createCanvas(canvasWidth, canvasHeight, canvasID)
-      : <HTMLCanvasElement>cardCanvasDom;
-  const canvasContainer = <HTMLDivElement>document.getElementById("canvas");
-
-  canvasContainer.append(cardCanvas);
 
   cards.forEach((card: iCard, index: number) => {
-    buildCard(card, index, cardCanvas);
+    buildCard(card, index);
   });
 }

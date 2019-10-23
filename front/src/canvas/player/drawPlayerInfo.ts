@@ -2,6 +2,7 @@ import { getPlayerData } from "../../utils";
 import { store, addPlayer } from "../../store";
 import { setPlayerLife } from "../../store/actions";
 import Konva from "konva";
+
 async function getAllPlayer() {
   return await getPlayerData();
 }

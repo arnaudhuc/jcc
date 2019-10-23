@@ -1,4 +1,7 @@
 import { iCard } from "../../utils";
+import { store } from "../../store";
+import Konva from "konva";
+import { canvas } from "../../store/reducers/canvas.reducers";
 
 const cardWidth = 200;
 const cardHeight = 300;
@@ -25,12 +28,8 @@ export function calcCardPosition(index: number): iCardPosition {
   return cardPosition;
 }
 
-export function buildCard(
-  card: iCard,
-  index: number,
-  canvas: HTMLCanvasElement
-) {
-  const context: CanvasRenderingContext2D = canvas.getContext("2d")!;
+export function buildCard(card: iCard, index: number) {
+  const { canvas: storage } = store.getState();
   const fontHeight = 10;
   const monsterImgWidth = cardWidth - 20;
   const monsterImgHeight = monsterImgWidth * 0.7;
@@ -46,28 +45,58 @@ export function buildCard(
     light: "#ffee58"
   };
 
-  context.fillStyle = colorMap[cardType];
-  context.fillRect(cardPosition.x, cardPosition.y, cardWidth, cardHeight);
-  context.fillStyle = "yellow";
-  context.fillRect(
-    cardPosition.x + 10,
-    cardPosition.y + 10,
-    monsterImgWidth,
-    monsterImgHeight
-  );
-  context.fillStyle = "#000";
-  context.textBaseline = "top";
-  context.textAlign = "center";
-  context.font = `${fontHeight}px helvetica, serif`;
-  context.fillText(
-    `${card.name} / ${index} - ${classe}`,
-    cardPosition.x + cardWidth / 2,
-    cardPosition.y + monsterImgHeight + 25,
-    cardWidth / 2
-  );
-  context.fillText(
-    card.effectDescription ? card.effectDescription : "",
-    cardPosition.x + cardWidth / 2,
-    cardPosition.y + monsterImgHeight + 40
-  );
+  const layer = new Konva.Layer();
+  const group = new Konva.Group({
+    draggable: true
+  });
+
+  const cardBackground = new Konva.Rect({
+    fill: colorMap[cardType],
+    width: cardWidth,
+    height: cardHeight,
+    x: cardPosition.x,
+    y: cardPosition.y
+  });
+  group.add(cardBackground);
+
+  const cardImage = new Konva.Rect({
+    fill: "yellow",
+    width: monsterImgWidth,
+    height: monsterImgHeight,
+    x: cardPosition.x + 10,
+    y: cardPosition.y + 10
+  });
+  group.add(cardImage);
+
+  const cardName = new Konva.Text({
+    fill: "#000",
+    fontFamily: "helvetica serif",
+    fontSize: 16,
+    text: `${card.name} / ${index} - ${classe}`,
+    x: cardPosition.x + cardWidth / 2,
+    y: cardPosition.y + monsterImgHeight + 25,
+    width: cardWidth / 2
+  });
+  group.add(cardName);
+
+  const cardDesc = new Konva.Text({
+    fill: "#000",
+    fontFamily: "helvetica serif",
+    fontSize: 16,
+    text: card.effectDescription ? card.effectDescription : "",
+    x: cardPosition.x + cardWidth / 2,
+    y: cardPosition.y + monsterImgHeight + 25,
+    width: cardWidth / 2
+  });
+  group.add(cardDesc);
+
+  group.on("mouseover", function() {
+    document.body.style.cursor = "pointer";
+  });
+  group.on("mouseout", function() {
+    document.body.style.cursor = "default";
+  });
+
+  layer.add(group);
+  storage.canvas.add(layer);
 }
