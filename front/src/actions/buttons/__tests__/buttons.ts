@@ -1,9 +1,9 @@
 import { displayAllCards } from "../buttons";
 import { displayCards } from "../../../canvas/cards/";
 
-describe("buttons", () => {
-  jest.mock("../../../canvas/cards/displayAllCards.ts");
+jest.mock("../../../canvas/cards/");
 
+describe("buttons", () => {
   test("should call displayCard when displayAllCards is called", () => {
     document.body.innerHTML = '<button id="display-all-cards"></button>';
 
