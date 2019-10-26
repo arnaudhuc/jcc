@@ -1,23 +1,11 @@
-interface Message {
-  message?: string;
-  data: Player | Deck | iCard;
-  id?: string;
-}
-
-interface Player {
-  name: string;
-  deck?: Array<number>;
-  password: string;
-}
-
-interface Deck {
-  name: string;
-  cards?: Array<number>;
-  date: string;
-}
-
-interface getData {
-  getDataService(id?: string): Promise<Message>;
+export enum type {
+  arcane = "arcane",
+  nature = "nature",
+  light = "light",
+  shadow = "shadow",
+  fell = "fell",
+  necro = "necro",
+  neutral = "neutral"
 }
 
 export interface iCard {
@@ -47,6 +35,7 @@ export interface iCard {
   effectneutralManaCost?: number;
   deckId?: number;
   id?: string;
+  attribute: type;
 }
 
 // De la bonne utilisation du async/await : https://docs.google.com/presentation/d/1S69pj-cENjHebGkNagMJUKa_Yd9rJoEWFYEOQnqJqU4/edit#slide=id.g584c3d6eeb_0_377

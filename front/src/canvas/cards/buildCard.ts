@@ -1,7 +1,6 @@
 import { iCard } from "../../utils";
 import { store } from "../../store";
 import Konva from "konva";
-import { canvas } from "../../store/reducers/canvas.reducers";
 
 const cardWidth = 200;
 const cardHeight = 300;
@@ -35,7 +34,7 @@ export function buildCard(card: iCard, index: number) {
   const monsterImgHeight = monsterImgWidth * 0.7;
   const cardPosition = calcCardPosition(index);
   const classe = card.class.join(", ");
-  const cardType = card.type.toLowerCase();
+  const cardType = card.attribute.toLowerCase();
   const colorMap: { [key: string]: string } = {
     arcane: "#42a5f5",
     fell: "#ef5350",
@@ -44,6 +43,8 @@ export function buildCard(card: iCard, index: number) {
     shadow: "#7e57c2",
     light: "#ffee58"
   };
+  const descBackgroundWidth = monsterImgWidth - 30;
+  const descBackgroundHeight = 30;
 
   const layer = new Konva.Layer();
   const group = new Konva.Group({
@@ -55,40 +56,67 @@ export function buildCard(card: iCard, index: number) {
     width: cardWidth,
     height: cardHeight,
     x: cardPosition.x,
-    y: cardPosition.y
+    y: cardPosition.y,
+    stroke: "black",
+    strokeWidth: 4
   });
   group.add(cardBackground);
 
   const cardImage = new Konva.Rect({
-    fill: "yellow",
     width: monsterImgWidth,
     height: monsterImgHeight,
     x: cardPosition.x + 10,
-    y: cardPosition.y + 10
+    y: cardPosition.y + 25,
+    stroke: "black",
+    strokeWidth: 1
   });
   group.add(cardImage);
 
   const cardName = new Konva.Text({
     fill: "#000",
     fontFamily: "helvetica serif",
-    fontSize: 16,
-    text: `${card.name} / ${index} - ${classe}`,
-    x: cardPosition.x + cardWidth / 2,
-    y: cardPosition.y + monsterImgHeight + 25,
-    width: cardWidth / 2
+    fontSize: fontHeight,
+    text: `${card.name} / ${index}`,
+    x: cardPosition.x + 10,
+    y: cardPosition.y + 10,
+    width: cardWidth - 20
   });
   group.add(cardName);
 
   const cardDesc = new Konva.Text({
     fill: "#000",
     fontFamily: "helvetica serif",
-    fontSize: 16,
+    fontSize: fontHeight,
     text: card.effectDescription ? card.effectDescription : "",
-    x: cardPosition.x + cardWidth / 2,
-    y: cardPosition.y + monsterImgHeight + 25,
-    width: cardWidth / 2
+    x: cardPosition.x + 10,
+    y: cardPosition.y + monsterImgHeight + 50,
+    width: cardWidth - 20
   });
   group.add(cardDesc);
+
+  const cardClassBackground = new Konva.Rect({
+    fill: "yellow",
+    width: descBackgroundWidth,
+    height: descBackgroundHeight,
+    stroke: "black",
+    strokeWidth: 1,
+    x: cardPosition.x + 25,
+    y: cardPosition.y + monsterImgHeight + 15
+  });
+
+  group.add(cardClassBackground);
+
+  const cardClass = new Konva.Text({
+    fill: "#000",
+    fontFamily: "helvetica",
+    fontSize: fontHeight,
+    text: `${card.type} - ${classe} - ${card.position}`,
+    x: cardPosition.x + 25,
+    y: cardPosition.y + monsterImgHeight + 25,
+    width: monsterImgWidth - 30,
+    align: "center"
+  });
+  group.add(cardClass);
 
   group.on("mouseover", function() {
     document.body.style.cursor = "pointer";

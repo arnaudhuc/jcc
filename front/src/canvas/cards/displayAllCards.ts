@@ -1,7 +1,5 @@
-import { createCanvas } from "../utils";
 import { getCardsData, iCard } from "../../utils";
 import { buildCard } from "./buildCard";
-import { canvasHeight, canvasWidth } from "../consts";
 
 async function getAllCards() {
   return await getCardsData();
