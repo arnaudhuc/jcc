@@ -1,14 +1,9 @@
-import { iCard } from "../../utils";
+import { iCard, iCardPosition } from "../../interfaces";
 import { store } from "../../store";
 import Konva from "konva";
 
 const cardWidth = 200;
 const cardHeight = 300;
-
-interface iCardPosition {
-  x: number;
-  y: number;
-}
 
 let cardPosition: iCardPosition = {
   x: 0,

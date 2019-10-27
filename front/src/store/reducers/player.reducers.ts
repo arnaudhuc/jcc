@@ -1,13 +1,5 @@
-import { ADD_PLAYER, SET_PLAYER_LIFE, playerInfo } from "../actions";
-
-interface iActionInterface {
-  type: string;
-  playerInfo: playerInfo;
-}
-
-interface iPlayer {
-  name: string;
-}
+import { ADD_PLAYER, SET_PLAYER_LIFE } from "../actions";
+import { iActionInterface, iPlayer } from "../../interfaces";
 
 export function players(state = [], action: iActionInterface): any {
   switch (action.type) {

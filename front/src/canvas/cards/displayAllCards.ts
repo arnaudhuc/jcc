@@ -1,4 +1,5 @@
-import { getCardsData, iCard } from "../../utils";
+import { getCardsData } from "../../utils";
+import { iCard } from "../../interfaces";
 import { buildCard } from "./buildCard";
 
 async function getAllCards() {
