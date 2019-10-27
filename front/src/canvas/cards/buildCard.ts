@@ -36,7 +36,8 @@ export function buildCard(card: iCard, index: number) {
     nature: "#66bb6a",
     necro: "#ba68c8",
     shadow: "#7e57c2",
-    light: "#ffee58"
+    light: "#ffee58",
+    neutral: "#e0e0e0"
   };
   const descBackgroundWidth = monsterImgWidth - 30;
   const descBackgroundHeight = 30;

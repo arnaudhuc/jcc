@@ -13,24 +13,31 @@ const cardModel = new Schema({
   },
   arcaneManaCost: {
     type: Number,
+    required: true,
   },
   natureManaCost: {
     type: Number,
+    required: true,
   },
   lightManaCost: {
     type: Number,
+    required: true,
   },
   shadowManaCost: {
     type: Number,
+    required: true,
   },
   fellManaCost: {
     type: Number,
+    required: true,
   },
   necroManaCost: {
     type: Number,
+    required: true,
   },
   neutralManaCost: {
     type: Number,
+    required: true,
   },
   type: {
     type: String,

@@ -11,13 +11,13 @@ export enum type {
 export interface iCard {
   number: number;
   name: string;
-  arcaneManaCost?: number;
-  natureManaCost?: number;
-  lightManaCost?: number;
-  shadowManaCost?: number;
-  fellManaCost?: number;
-  necroManaCost?: number;
-  neutralManaCost?: number;
+  arcaneManaCost: number;
+  natureManaCost: number;
+  lightManaCost: number;
+  shadowManaCost: number;
+  fellManaCost: number;
+  necroManaCost: number;
+  neutralManaCost: number;
   type: string;
   class: Array<string>;
   position?: string;
@@ -35,7 +35,7 @@ export interface iCard {
   effectneutralManaCost?: number;
   deckId?: number;
   id?: string;
-  attribute: type;
+  attribute: string | type;
 }
 
 export interface iCardPosition {
