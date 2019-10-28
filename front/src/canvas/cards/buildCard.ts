@@ -1,6 +1,7 @@
 import { iCard, iCardPosition } from "../../interfaces";
 import { store } from "../../store";
 import Konva from "konva";
+import { displayCardCost } from "./index";
 
 const cardWidth = 200;
 const cardHeight = 300;
@@ -9,6 +10,33 @@ let cardPosition: iCardPosition = {
   x: 0,
   y: 0
 };
+
+function calcCost(cost: any): string {
+  let result: string | number = "";
+  let aCost: Array<string | number> = [];
+
+  cost.forEach((card: any) => {
+    let i = 0;
+    if (card.type !== "Neu") {
+      while (i <= card.cost) {
+        aCost.push(card.type);
+        i++;
+      }
+    } else {
+      aCost.splice(0, 1, card.cost);
+    }
+  });
+
+  result = aCost.join("");
+
+  return result;
+}
+
+function calcCardCost(card: iCard): string {
+  const cardCost = displayCardCost(card);
+
+  return calcCost(cardCost);
+}
 
 export function calcCardPosition(index: number): iCardPosition {
   const maxCardRow = 6;
@@ -72,12 +100,26 @@ export function buildCard(card: iCard, index: number) {
     fill: "#000",
     fontFamily: "helvetica serif",
     fontSize: fontHeight,
-    text: `${card.name} / ${index}`,
+    text: `${card.name}`,
     x: cardPosition.x + 10,
     y: cardPosition.y + 10,
     width: cardWidth - 20
   });
   group.add(cardName);
+
+  const cardCostText = calcCardCost(card);
+
+  const cardCost = new Konva.Text({
+    fill: "#000",
+    fontFamily: "helvetica serif",
+    fontSize: fontHeight,
+    text: cardCostText,
+    x: cardPosition.x + cardWidth - 60,
+    y: cardPosition.y + 10,
+    width: 50,
+    align: "right"
+  });
+  group.add(cardCost);
 
   const cardDesc = new Konva.Text({
     fill: "#000",
