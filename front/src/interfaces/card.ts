@@ -35,6 +35,7 @@ export interface iCard {
   effectneutralManaCost?: number;
   deckId?: number;
   id?: string;
+  image: string;
   attribute: string | type;
 }
 

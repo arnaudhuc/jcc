@@ -93,6 +93,10 @@ const cardModel = new Schema({
     type: String,
     required: true,
   },
+  image: {
+    type: String,
+    required: true,
+  },
 });
 
 export default mongoose.model('cards', cardModel);

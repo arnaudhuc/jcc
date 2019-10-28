@@ -86,7 +86,12 @@ export function buildCard(card: iCard, index: number) {
   });
   group.add(cardBackground);
 
-  const cardImage = new Konva.Rect({
+  const imgObj = new Image();
+
+  imgObj.src = "https://i.ytimg.com/vi/Ztm2a_7g4Kw/maxresdefault.jpg";
+
+  const cardImage = new Konva.Image({
+    image: imgObj,
     width: monsterImgWidth,
     height: monsterImgHeight,
     x: cardPosition.x + 10,
@@ -127,7 +132,7 @@ export function buildCard(card: iCard, index: number) {
     fontSize: fontHeight,
     text: card.effectDescription ? card.effectDescription : "",
     x: cardPosition.x + 10,
-    y: cardPosition.y + monsterImgHeight + 50,
+    y: cardPosition.y + monsterImgHeight + 100,
     width: cardWidth - 20
   });
   group.add(cardDesc);
@@ -155,6 +160,42 @@ export function buildCard(card: iCard, index: number) {
     align: "center"
   });
   group.add(cardClass);
+
+  const cardLife = new Konva.Text({
+    fill: "#000",
+    fontFamily: "helvetica",
+    fontSize: fontHeight,
+    text: `${card.life}`,
+    x: cardPosition.x + monsterImgWidth / 2 + 5,
+    y: cardPosition.y + monsterImgHeight + 50,
+    width: 10,
+    align: "center"
+  });
+  group.add(cardLife);
+
+  const cardAttack = new Konva.Text({
+    fill: "#000",
+    fontFamily: "helvetica",
+    fontSize: fontHeight,
+    text: `${card.attack}`,
+    x: cardPosition.x + 15,
+    y: cardPosition.y + monsterImgHeight + 50,
+    width: 10,
+    align: "center"
+  });
+  group.add(cardAttack);
+
+  const cardDefense = new Konva.Text({
+    fill: "#000",
+    fontFamily: "helvetica",
+    fontSize: fontHeight,
+    text: `${card.defense}`,
+    x: cardPosition.x + cardWidth - 20,
+    y: cardPosition.y + monsterImgHeight + 50,
+    width: 10,
+    align: "center"
+  });
+  group.add(cardDefense);
 
   group.on("mouseover", function() {
     document.body.style.cursor = "pointer";
