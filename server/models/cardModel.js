@@ -11,33 +11,37 @@ const cardModel = new Schema({
     type: String,
     required: true,
   },
-  arcaneManaCost: {
-    type: Number,
+  cardManaCost: {
+    type: Object,
     required: true,
-  },
-  natureManaCost: {
-    type: Number,
-    required: true,
-  },
-  lightManaCost: {
-    type: Number,
-    required: true,
-  },
-  shadowManaCost: {
-    type: Number,
-    required: true,
-  },
-  fellManaCost: {
-    type: Number,
-    required: true,
-  },
-  necroManaCost: {
-    type: Number,
-    required: true,
-  },
-  neutralManaCost: {
-    type: Number,
-    required: true,
+    arcane: {
+      type: Number,
+      required: true,
+    },
+    nature: {
+      type: Number,
+      required: true,
+    },
+    light: {
+      type: Number,
+      required: true,
+    },
+    shadow: {
+      type: Number,
+      required: true,
+    },
+    fell: {
+      type: Number,
+      required: true,
+    },
+    necro: {
+      type: Number,
+      required: true,
+    },
+    neutral: {
+      type: Number,
+      required: true,
+    },
   },
   type: {
     type: String,

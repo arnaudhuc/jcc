@@ -1,4 +1,4 @@
-import { iCard, manaCost, type } from "../../interfaces";
+import { iCard, cardManaCost, type } from "../../interfaces";
 
 const displayType = {
   [type.arcane]: "A",
@@ -12,11 +12,11 @@ const displayType = {
 
 interface ManaToDisplay {
   type: string;
-  cost: manaCost;
+  cost: cardManaCost;
 }
 
 export function displayCardCost(card: iCard): ManaToDisplay[] {
-  return Object.entries(card.manaCost).reduce((acc, [key, values]) => {
+  return Object.entries(card.cardManaCost).reduce((acc, [key, values]) => {
     if (values) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       // @ts-ignore

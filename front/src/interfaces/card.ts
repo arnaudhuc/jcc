@@ -8,22 +8,22 @@ export enum type {
   neutral = "neutral"
 }
 
-export type manaCost = number;
+export type ManaCost = number;
 
-export interface ManaCost {
-  [type.arcane]: manaCost;
-  [type.nature]: manaCost;
-  [type.light]: manaCost;
-  [type.shadow]: manaCost;
-  [type.fell]: manaCost;
-  [type.necro]: manaCost;
-  [type.neutral]: manaCost;
+export interface cardManaCost {
+  [type.arcane]: ManaCost;
+  [type.nature]: ManaCost;
+  [type.light]: ManaCost;
+  [type.shadow]: ManaCost;
+  [type.fell]: ManaCost;
+  [type.necro]: ManaCost;
+  [type.neutral]: ManaCost;
 }
 
 export interface iCard {
   number: number;
   name: string;
-  manaCost: ManaCost;
+  cardManaCost: cardManaCost;
   type: string;
   class: Array<string>;
   position?: string;

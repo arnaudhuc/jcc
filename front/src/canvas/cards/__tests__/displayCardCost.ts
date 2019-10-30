@@ -1,7 +1,7 @@
 import { displayCardCost } from "../";
-import { iCard, ManaCost } from "../../../interfaces";
+import { iCard, cardManaCost } from "../../../interfaces";
 
-const manaCost: ManaCost = {
+const cardManaCost: cardManaCost = {
   arcane: 0,
   nature: 0,
   light: 0,
@@ -17,29 +17,29 @@ const card: iCard = {
   type: "Champion",
   class: ["Mage"],
   attribute: "necro",
-  manaCost: manaCost
+  cardManaCost: cardManaCost
 };
 
 describe("exportCardCost", () => {
   test("it should return A when the cost of the card is 1 arcane", () => {
-    manaCost.arcane = 1;
+    cardManaCost.arcane = 1;
 
     expect(displayCardCost(card)).toMatchObject([{ type: "A", cost: 1 }]);
   });
 
   test("it should return AA when the cost of the card is 2 arcane", () => {
-    manaCost.arcane = 2;
+    cardManaCost.arcane = 2;
     expect(displayCardCost(card)).toMatchObject([{ type: "A", cost: 2 }]);
   });
 
   test("it should return an object with 3A when the cost of the card is 3A", () => {
-    manaCost.arcane = 3;
+    cardManaCost.arcane = 3;
     expect(displayCardCost(card)).toMatchObject([{ type: "A", cost: 3 }]);
   });
 
   test("it should return an object with 3A and 3 Neu when the cost of the card is 3 Arcanes and 3 Neutral", () => {
-    manaCost.arcane = 3;
-    manaCost.neutral = 3;
+    cardManaCost.arcane = 3;
+    cardManaCost.neutral = 3;
     expect(displayCardCost(card)).toMatchObject([
       { type: "A", cost: 3 },
       { type: "Neu", cost: 3 }
@@ -47,13 +47,13 @@ describe("exportCardCost", () => {
   });
 
   test("it should return an object with 1 of all cost when the cost of the card is 1 in every mana type", () => {
-    manaCost.arcane = 1;
-    manaCost.neutral = 1;
-    manaCost.nature = 1;
-    manaCost.light = 1;
-    manaCost.shadow = 1;
-    manaCost.fell = 1;
-    manaCost.necro = 1;
+    cardManaCost.arcane = 1;
+    cardManaCost.neutral = 1;
+    cardManaCost.nature = 1;
+    cardManaCost.light = 1;
+    cardManaCost.shadow = 1;
+    cardManaCost.fell = 1;
+    cardManaCost.necro = 1;
     expect(displayCardCost(card)).toMatchObject([
       { type: "A", cost: 1 },
       { type: "N", cost: 1 },
