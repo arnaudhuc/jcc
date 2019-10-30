@@ -32,7 +32,7 @@ export interface iCard {
   life?: number;
   mana?: number;
   effectDescription?: string;
-  effectManaCost?: iManaCost;
+  effectManaCost: iManaCost;
   deckId?: number;
   id?: string;
   image?: string;

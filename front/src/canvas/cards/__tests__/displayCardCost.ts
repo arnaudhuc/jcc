@@ -17,7 +17,8 @@ const card: iCard = {
   type: "Champion",
   class: ["Mage"],
   attribute: "necro",
-  cardManaCost: cardManaCost
+  cardManaCost: cardManaCost,
+  effectManaCost: cardManaCost
 };
 
 describe("exportCardCost", () => {
