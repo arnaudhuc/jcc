@@ -8,16 +8,22 @@ export enum type {
   neutral = "neutral"
 }
 
+export type ManaCost = number;
+
+export interface cardManaCost {
+  [type.arcane]: ManaCost;
+  [type.nature]: ManaCost;
+  [type.light]: ManaCost;
+  [type.shadow]: ManaCost;
+  [type.fell]: ManaCost;
+  [type.necro]: ManaCost;
+  [type.neutral]: ManaCost;
+}
+
 export interface iCard {
   number: number;
   name: string;
-  arcaneManaCost: number;
-  natureManaCost: number;
-  lightManaCost: number;
-  shadowManaCost: number;
-  fellManaCost: number;
-  necroManaCost: number;
-  neutralManaCost: number;
+  cardManaCost: cardManaCost;
   type: string;
   class: Array<string>;
   position?: string;
@@ -35,7 +41,7 @@ export interface iCard {
   effectneutralManaCost?: number;
   deckId?: number;
   id?: string;
-  image: string;
+  image?: string;
   attribute: string | type;
 }
 

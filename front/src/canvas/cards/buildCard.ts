@@ -6,14 +6,13 @@ import { displayCardCost } from "./index";
 const cardWidth = 200;
 const cardHeight = 300;
 
-let cardPosition: iCardPosition = {
+const cardPosition: iCardPosition = {
   x: 0,
   y: 0
 };
 
 function calcCost(cost: any): string {
-  let result: string | number = "";
-  let aCost: Array<string | number> = [];
+  const aCost: Array<string | number> = [];
 
   cost.forEach((card: any) => {
     let i = 0;
@@ -27,9 +26,7 @@ function calcCost(cost: any): string {
     }
   });
 
-  result = aCost.join("");
-
-  return result;
+  return aCost.join("");
 }
 
 function calcCardCost(card: iCard): string {
@@ -130,7 +127,7 @@ export function buildCard(card: iCard, index: number) {
     fill: "#000",
     fontFamily: "helvetica serif",
     fontSize: fontHeight,
-    text: card.effectDescription ? card.effectDescription : "",
+    text: card.effectDescription || "",
     x: cardPosition.x + 10,
     y: cardPosition.y + monsterImgHeight + 100,
     width: cardWidth - 20

@@ -1,50 +1,27 @@
-import { iCard } from "../../interfaces";
+import { iCard, cardManaCost, type } from "../../interfaces";
 
-export function displayCardCost(cardCost: iCard) {
-  let cardCostArr = [];
+const displayType = {
+  [type.arcane]: "A",
+  [type.nature]: "N",
+  [type.light]: "L",
+  [type.shadow]: "S",
+  [type.fell]: "F",
+  [type.necro]: "Nec",
+  [type.neutral]: "Neu"
+};
 
-  if (cardCost.arcaneManaCost) {
-    cardCostArr.push({
-      type: "A",
-      cost: cardCost.arcaneManaCost
-    });
-  }
-  if (cardCost.natureManaCost) {
-    cardCostArr.push({
-      type: "N",
-      cost: cardCost.natureManaCost
-    });
-  }
-  if (cardCost.lightManaCost) {
-    cardCostArr.push({
-      type: "L",
-      cost: cardCost.lightManaCost
-    });
-  }
-  if (cardCost.shadowManaCost) {
-    cardCostArr.push({
-      type: "S",
-      cost: cardCost.shadowManaCost
-    });
-  }
-  if (cardCost.fellManaCost) {
-    cardCostArr.push({
-      type: "F",
-      cost: cardCost.fellManaCost
-    });
-  }
-  if (cardCost.necroManaCost) {
-    cardCostArr.push({
-      type: "Nec",
-      cost: cardCost.necroManaCost
-    });
-  }
-  if (cardCost.neutralManaCost) {
-    cardCostArr.push({
-      type: "Neu",
-      cost: cardCost.neutralManaCost
-    });
-  }
+interface ManaToDisplay {
+  type: string;
+  cost: cardManaCost;
+}
 
-  return cardCostArr;
+export function displayCardCost(card: iCard): ManaToDisplay[] {
+  return Object.entries(card.cardManaCost).reduce((acc, [key, values]) => {
+    if (values) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+      acc.push({ type: displayType[key], cost: values });
+    }
+    return acc;
+  }, []);
 }
