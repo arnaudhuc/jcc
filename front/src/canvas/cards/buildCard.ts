@@ -30,9 +30,15 @@ function calcCost(cost: any): string {
 }
 
 function calcCardCost(card: iCard): string {
-  const cardCost = displayCardCost(card);
+  const cardCost = displayCardCost(card.cardManaCost);
 
   return calcCost(cardCost);
+}
+
+function calcEffectCost(card: iCard): string {
+  const effectCost = displayCardCost(card.effectManaCost);
+
+  return calcCost(effectCost);
 }
 
 export function calcCardPosition(index: number): iCardPosition {
@@ -100,7 +106,7 @@ export function buildCard(card: iCard, index: number) {
 
   const cardName = new Konva.Text({
     fill: "#000",
-    fontFamily: "helvetica serif",
+    fontFamily: "Arial serif",
     fontSize: fontHeight,
     text: `${card.name}`,
     x: cardPosition.x + 10,
@@ -113,7 +119,7 @@ export function buildCard(card: iCard, index: number) {
 
   const cardCost = new Konva.Text({
     fill: "#000",
-    fontFamily: "helvetica serif",
+    fontFamily: "Arial serif",
     fontSize: fontHeight,
     text: cardCostText,
     x: cardPosition.x + cardWidth - 60,
@@ -123,16 +129,29 @@ export function buildCard(card: iCard, index: number) {
   });
   group.add(cardCost);
 
-  const cardDesc = new Konva.Text({
+  const effectCostText = calcEffectCost(card);
+
+  const cardEffectCost = new Konva.Text({
     fill: "#000",
-    fontFamily: "helvetica serif",
+    fontFamily: "Arial serif",
     fontSize: fontHeight,
-    text: card.effectDescription || "",
+    text: effectCostText || "",
     x: cardPosition.x + 10,
     y: cardPosition.y + monsterImgHeight + 100,
-    width: cardWidth - 20
+    width: 20
   });
-  group.add(cardDesc);
+  group.add(cardEffectCost);
+
+  const cardEffect = new Konva.Text({
+    fill: "#000",
+    fontFamily: "Arial serif",
+    fontSize: fontHeight,
+    text: card.effectDescription || "",
+    x: cardPosition.x + 40,
+    y: cardPosition.y + monsterImgHeight + 100,
+    width: cardWidth - 60
+  });
+  group.add(cardEffect);
 
   const cardClassBackground = new Konva.Rect({
     fill: "yellow",
@@ -148,7 +167,7 @@ export function buildCard(card: iCard, index: number) {
 
   const cardClass = new Konva.Text({
     fill: "#000",
-    fontFamily: "helvetica",
+    fontFamily: "Arial",
     fontSize: fontHeight,
     text: `${card.type} - ${classe} - ${card.position}`,
     x: cardPosition.x + 25,
@@ -160,7 +179,7 @@ export function buildCard(card: iCard, index: number) {
 
   const cardLife = new Konva.Text({
     fill: "#000",
-    fontFamily: "helvetica",
+    fontFamily: "Arial",
     fontSize: fontHeight,
     text: `${card.life}`,
     x: cardPosition.x + monsterImgWidth / 2 + 5,
@@ -172,7 +191,7 @@ export function buildCard(card: iCard, index: number) {
 
   const cardAttack = new Konva.Text({
     fill: "#000",
-    fontFamily: "helvetica",
+    fontFamily: "Arial",
     fontSize: fontHeight,
     text: `${card.attack}`,
     x: cardPosition.x + 15,
@@ -184,7 +203,7 @@ export function buildCard(card: iCard, index: number) {
 
   const cardDefense = new Konva.Text({
     fill: "#000",
-    fontFamily: "helvetica",
+    fontFamily: "Arial",
     fontSize: fontHeight,
     text: `${card.defense}`,
     x: cardPosition.x + cardWidth - 20,
@@ -193,6 +212,18 @@ export function buildCard(card: iCard, index: number) {
     align: "center"
   });
   group.add(cardDefense);
+
+  const cardMana = new Konva.Text({
+    fill: "#000",
+    fontFamily: "Arial",
+    fontSize: fontHeight,
+    text: `${card.mana}`,
+    x: cardPosition.x + monsterImgWidth / 2 + 5,
+    y: cardPosition.y + cardHeight - 15,
+    width: 10,
+    align: "center"
+  });
+  group.add(cardMana);
 
   group.on("mouseover", function() {
     document.body.style.cursor = "pointer";
