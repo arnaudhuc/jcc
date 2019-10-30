@@ -66,29 +66,32 @@ const cardModel = new Schema({
   mana: {
     type: Number,
   },
+  effectManaCost: {
+    type: Object,
+  },
   effectDescription: {
     type: String,
-  },
-  effectarcaneManaCost: {
-    type: Number,
-  },
-  effectnatureManaCost: {
-    type: Number,
-  },
-  effectlightManaCost: {
-    type: Number,
-  },
-  effectshadowManaCost: {
-    type: Number,
-  },
-  effectfellManaCost: {
-    type: Number,
-  },
-  effectnecroManaCost: {
-    type: Number,
-  },
-  effectneutralManaCost: {
-    type: Number,
+    arcane: {
+      type: Number,
+    },
+    nature: {
+      type: Number,
+    },
+    light: {
+      type: Number,
+    },
+    shadow: {
+      type: Number,
+    },
+    fell: {
+      type: Number,
+    },
+    necro: {
+      type: Number,
+    },
+    neutral: {
+      type: Number,
+    },
   },
   deckId: {
     type: Number,

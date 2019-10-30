@@ -10,7 +10,7 @@ export enum type {
 
 export type ManaCost = number;
 
-export interface cardManaCost {
+export interface iManaCost {
   [type.arcane]: ManaCost;
   [type.nature]: ManaCost;
   [type.light]: ManaCost;
@@ -23,7 +23,7 @@ export interface cardManaCost {
 export interface iCard {
   number: number;
   name: string;
-  cardManaCost: cardManaCost;
+  cardManaCost: iManaCost;
   type: string;
   class: Array<string>;
   position?: string;
@@ -32,13 +32,7 @@ export interface iCard {
   life?: number;
   mana?: number;
   effectDescription?: string;
-  effectarcaneManaCost?: number;
-  effectnatureManaCost?: number;
-  effectlightManaCost?: number;
-  effectshadowManaCost?: number;
-  effectfellManaCost?: number;
-  effectnecroManaCost?: number;
-  effectneutralManaCost?: number;
+  effectManaCost?: iManaCost;
   deckId?: number;
   id?: string;
   image?: string;
