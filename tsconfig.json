@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "strict": true,
+        "noImplicitReturns": true,
+        "noImplicitAny": true,
+        "module": "es6",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "node",
+        "target": "es5",
+        "allowJs": true,
+        "jsx": "react",
+        "lib": [
+            "dom",
+            "esnext"
+        ],
+        "types": ["jest"],
+    },
+    "include": [
+        "../src/**/*"
+    ],
+    "exclude": [
+        "dist",
+        "**/*.spec.ts",
+        "node_modules",
+        "!node_modules/@types"
+    ]
+}
