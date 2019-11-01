@@ -1,5 +1,5 @@
 import { displayAllCards } from "../buttons";
-import { displayCards } from "../../../canvas/cards/";
+import { displayCards } from "../../../canvas/cards";
 
 jest.mock("../../../canvas/cards/");
 

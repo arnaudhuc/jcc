@@ -2,6 +2,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
+import Bundler from 'parcel-bundler';
 
 import { cardRouter, deckRouter, playerRouter } from './Routes';
 
@@ -42,6 +43,13 @@ app.use(
 app.use('/api/cards', cardRouter);
 app.use('/api/decks', deckRouter);
 app.use('/api/players', playerRouter);
+
+const file = './front/index.html'; // Passe ici un chemin absolu vers le point d'entrée
+const options = {}; // Voir la section des options de la doc de l'api, pour les possibilités
+
+// Initialise un nouveau bundler en utilisant un fichier et des options
+const bundler = new Bundler(file, options);
+app.use(bundler.middleware());
 
 // Running the server
 app.listen(port, () => {
