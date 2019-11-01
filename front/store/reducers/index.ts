@@ -1,10 +1,10 @@
-import { combineReducers } from "redux";
-import { players } from "./player.reducers";
-import { canvas } from "./canvas.reducers";
+import { combineReducers } from 'redux';
+import { players } from './player.reducers';
+import { canvas } from './canvas.reducers';
 
 const reducers = combineReducers({
   players,
-  canvas
+  canvas,
 });
 
 export default reducers;

@@ -1,2 +1,2 @@
-export * from "./player.actions";
-export * from "./canvas.actions";
+export * from './player.actions';
+export * from './canvas.actions';

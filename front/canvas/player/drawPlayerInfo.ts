@@ -1,13 +1,13 @@
-import { getPlayerData } from "../../utils";
-import { store, addPlayer } from "../../store";
-import { setPlayerLife } from "../../store/actions";
-import Konva from "konva";
+import { getPlayerData } from '../../utils';
+import { store, addPlayer } from '../../store';
+import { setPlayerLife } from '../../store/actions';
+import Konva from 'konva';
 
-async function getAllPlayer() {
+async function getAllPlayer(): Promise<any> {
   return await getPlayerData();
 }
 
-async function getMainPlayer() {
+async function getMainPlayer(): Promise<any> {
   const playersId = getAllPlayer();
   let id;
 
@@ -18,7 +18,7 @@ async function getMainPlayer() {
   });
 }
 
-function drawHeroName(playerName: string) {
+function drawHeroName(playerName: string): void {
   const { canvas: storage } = store.getState();
   // store.subscribe(() => {
   //   console.log("subscribe");
@@ -29,10 +29,10 @@ function drawHeroName(playerName: string) {
 
   const playerText = new Konva.Text({
     fontSize: 16,
-    fontFamily: "serif",
+    fontFamily: 'serif',
     text: playerName,
     x: 50,
-    y: 50
+    y: 50,
   });
 
   store.dispatch(addPlayer({ name: playerName, life: 30 }));
@@ -48,7 +48,7 @@ function drawHeroName(playerName: string) {
   storage.canvas.add(layer);
 }
 
-export const drawPlayerInfo = function() {
+export const drawPlayerInfo = (): void => {
   const playerInfo = getMainPlayer();
   playerInfo.then(name => drawHeroName(name));
 };

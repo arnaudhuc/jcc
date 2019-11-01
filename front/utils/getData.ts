@@ -13,26 +13,26 @@ function getDataService(type: string) {
           return response.json().then(data => data);
         } else {
           return {
-            message: "error"
+            message: 'error',
           };
         }
       });
       return {
-        data
+        data,
       };
     } catch (thrown) {
-      let data = {};
+      const data = {};
 
       return {
         message: `Erreur lors de la récupération des données`,
-        data
+        data,
       };
     }
   };
 }
 
-const getPlayerData = getDataService("players");
-const getDeckData = getDataService("decks");
-const getCardsData = getDataService("cards");
+const getPlayerData = getDataService('players');
+const getDeckData = getDataService('decks');
+const getCardsData = getDataService('cards');
 
 export { getPlayerData, getDeckData, getCardsData };

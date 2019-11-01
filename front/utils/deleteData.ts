@@ -3,33 +3,33 @@ function deleteDataService(type: string) {
     try {
       const URI = `http://localhost:5656/api/${type}/${id}`;
       const fetchOptions = {
-        method: "DELETE"
+        method: 'DELETE',
       };
       const data = await fetch(URI, fetchOptions).then(response => {
         if (response.ok) {
           return response.json().then(data => data);
         } else {
           return {
-            message: "error"
+            message: 'error',
           };
         }
       });
       return {
-        data
+        data,
       };
     } catch (thrown) {
-      let data = {};
+      const data = {};
 
       return {
         message: `Erreur lors de la suppresion des données`,
-        data
+        data,
       };
     }
   };
 }
 
-const deletePlayerData = deleteDataService("players");
-const deleteDeckData = deleteDataService("decks");
-const deleteCardsData = deleteDataService("cards");
+const deletePlayerData = deleteDataService('players');
+const deleteDeckData = deleteDataService('decks');
+const deleteCardsData = deleteDataService('cards');
 
 export { deletePlayerData, deleteDeckData, deleteCardsData };

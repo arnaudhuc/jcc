@@ -1,8 +1,8 @@
-import { getCardsData } from "../../utils";
-import { iCard } from "../../interfaces";
-import { buildCard } from "./buildCard";
+import { getCardsData } from '../../utils';
+import { iCard } from '../../interfaces';
+import { buildCard } from './buildCard';
 
-async function getAllCards() {
+async function getAllCards(): Promise<any> {
   return await getCardsData();
 }
 

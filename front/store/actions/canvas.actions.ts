@@ -2,7 +2,7 @@
  * action types
  */
 
-export const ADD_CANVAS = "ADD_CANVAS";
+export const ADD_CANVAS = 'ADD_CANVAS';
 /*
  * action creators
  */

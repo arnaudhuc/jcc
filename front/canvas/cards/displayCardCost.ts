@@ -1,13 +1,13 @@
-import { iCard, iManaCost, type } from "../../interfaces";
+import { iCard, iManaCost, type } from '../../interfaces';
 
 const displayType = {
-  [type.arcane]: "A",
-  [type.nature]: "N",
-  [type.light]: "L",
-  [type.shadow]: "S",
-  [type.fell]: "F",
-  [type.necro]: "Nec",
-  [type.neutral]: "Neu"
+  [type.arcane]: 'A',
+  [type.nature]: 'N',
+  [type.light]: 'L',
+  [type.shadow]: 'S',
+  [type.fell]: 'F',
+  [type.necro]: 'Nec',
+  [type.neutral]: 'Neu',
 };
 
 interface ManaToDisplay {

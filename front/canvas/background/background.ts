@@ -1,6 +1,6 @@
-import { canvasHeight, canvasWidth } from "../consts";
-import Konva from "konva";
-import { store } from "../../store";
+import { canvasHeight, canvasWidth } from '../consts';
+import Konva from 'konva';
+import { store } from '../../store';
 
 export function drawBackground() {
   const { canvas: storage } = store.getState();
@@ -10,7 +10,7 @@ export function drawBackground() {
     y: 0,
     width: canvasWidth,
     height: canvasHeight,
-    fill: "#8d6e63"
+    fill: '#8d6e63',
   });
 
   layer.add(background);

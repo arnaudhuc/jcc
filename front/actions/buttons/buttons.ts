@@ -1,11 +1,11 @@
-import { displayCards } from "../../canvas/cards";
+import { displayCards } from '../../canvas/cards';
 
 const displayAllCards: any = function() {
-  const displayAllCardsButton = <HTMLButtonElement>(
-    document.getElementById("display-all-cards")
-  );
+  const displayAllCardsButton = document.getElementById(
+    'display-all-cards',
+  ) as HTMLButtonElement;
 
-  displayAllCardsButton.addEventListener("click", () => {
+  displayAllCardsButton.addEventListener('click', () => {
     displayCards();
   });
 };

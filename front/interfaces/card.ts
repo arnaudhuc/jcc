@@ -1,11 +1,11 @@
 export enum type {
-  arcane = "arcane",
-  nature = "nature",
-  light = "light",
-  shadow = "shadow",
-  fell = "fell",
-  necro = "necro",
-  neutral = "neutral"
+  arcane = 'arcane',
+  nature = 'nature',
+  light = 'light',
+  shadow = 'shadow',
+  fell = 'fell',
+  necro = 'necro',
+  neutral = 'neutral',
 }
 
 export type ManaCost = number;

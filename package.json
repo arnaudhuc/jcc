@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": ":) ",
   "scripts": {
-    "start": "parcel server.js",
+    "start": "nodemon --exec babel-node server.js",
     "test": "jest"
   },
   "repository": {
