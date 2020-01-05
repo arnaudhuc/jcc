@@ -2,35 +2,15 @@ import { iCard, iCardPosition } from "../../interfaces";
 import { store } from "../../store";
 import Konva from "konva";
 import { displayCardCost } from "./index";
+import { calcCost } from "./calcCost";
 
 const cardWidth = 200;
 const cardHeight = 300;
 
-let cardPosition: iCardPosition = {
+const cardPosition: iCardPosition = {
   x: 0,
   y: 0
 };
-
-function calcCost(cost: any): string {
-  let result: string | number = "";
-  let aCost: Array<string | number> = [];
-
-  cost.forEach((card: any) => {
-    let i = 0;
-    if (card.type !== "Neu") {
-      while (i <= card.cost) {
-        aCost.push(card.type);
-        i++;
-      }
-    } else {
-      aCost.splice(0, 1, card.cost);
-    }
-  });
-
-  result = aCost.join("");
-
-  return result;
-}
 
 function calcCardCost(card: iCard): string {
   const cardCost = displayCardCost(card);
@@ -50,7 +30,7 @@ export function calcCardPosition(index: number): iCardPosition {
   return cardPosition;
 }
 
-export function buildCard(card: iCard, index: number) {
+export function buildCard(card: iCard, index: number): void {
   const { canvas: storage } = store.getState();
   const fontHeight = 10;
   const monsterImgWidth = cardWidth - 20;

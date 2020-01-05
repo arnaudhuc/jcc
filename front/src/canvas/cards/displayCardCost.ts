@@ -1,7 +1,7 @@
 import { iCard } from "../../interfaces";
 
-export function displayCardCost(cardCost: iCard) {
-  let cardCostArr = [];
+export function displayCardCost(cardCost: iCard): Array<any> {
+  const cardCostArr = [];
 
   if (cardCost.arcaneManaCost) {
     cardCostArr.push({
