@@ -1,13 +1,10 @@
 {
-  "extends": [
-    "config:base"
-  ],
-  "packageRules": [
-    {
-      "updateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
-    }
-  ],
+  "extends": ["config:base"],
+  "automerge": false,
+  "major": {
+    "automerge": false
+  },
   "automergeType": "branch",
-  "rangeStrategy": "auto"
+  "rangeStrategy": "auto",
+  "rebaseStalePrs": false,
 }
