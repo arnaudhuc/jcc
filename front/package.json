@@ -29,7 +29,7 @@
     "husky": "4.2.5",
     "identity-obj-proxy": "3.0.0",
     "jest": "25.5.2",
-    "jest-canvas-mock": "2.1.2",
+    "jest-canvas-mock": "2.2.0",
     "parcel-bundler": "1.12.4",
     "prettier": "2.0.5",
     "sass": "1.23.0",
