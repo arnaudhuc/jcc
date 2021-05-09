@@ -32,7 +32,7 @@
     "eslint-plugin-prettier": "3.4.0",
     "install": "0.13.0",
     "jest": "26.6.3",
-    "prettier": "2.2.1",
+    "prettier": "2.3.0",
     "superagent": "6.1.0",
     "supertest": "6.1.3"
   }
